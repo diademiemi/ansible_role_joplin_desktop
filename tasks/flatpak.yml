@@ -3,6 +3,7 @@
   ansible.builtin.command: flatpak --version
   register: flatpak_installed
   ignore_errors: true
+  changed_when: false
 
 - name: Fail if Flatpak is not installed
   ansible.builtin.fail:
