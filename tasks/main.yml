@@ -1,0 +1,20 @@
+---
+- name: Download Joplin AppImage
+  become: true
+  ansible.builtin.get_url:
+    url: "{{ joplin_desktop_appimage_package }}"
+    dest: "/usr/local/bin/joplin"
+    mode: 0755
+  when: joplin_desktop_package_format == 'appimage'
+
+- name: Place Joplin AppImage desktop file
+  become: true
+  ansible.builtin.copy:
+    src: "joplin.desktop"
+    dest: "/usr/share/applications/joplin.desktop"
+    mode: 0644
+  when: joplin_desktop_package_format == 'appimage'
+
+- name: Import flatpak tasks
+  import_tasks: flatpak.yml
+  when: joplin_desktop_package_format == 'flatpak'

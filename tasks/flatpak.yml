@@ -1,0 +1,16 @@
+---
+- name: Check if Flatpak is installed
+  ansible.builtin.command: flatpak --version
+  register: flatpak_installed
+  ignore_errors: true
+
+- name: Fail if Flatpak is not installed
+  ansible.builtin.fail:
+    msg: "Flatpak is not installed"
+  when: flatpak_installed.rc != 0
+
+- name: Install Joplin Desktop Flatpak
+  become: true
+  community.general.flatpak:
+    name: "{{ joplin_desktop_flathub_package }}"
+    state: present
