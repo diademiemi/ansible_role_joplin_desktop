@@ -1,5 +1,5 @@
 # Ansible Role Joplin Desktop
-This is an Ansible role that installs Joplin Desktop on Linux. It can use the AppImage or Flatpak package.  
+This is an Ansible role that installs Joplin Desktop on Linux. It can use the AppImage or the unofficial Flatpak package.  
 
 Tested on Fedora 36 and Ubuntu 22.04, should work on any Linux distribution that the Joplin Desktop AppImage or Flatpak package supports.  
 
